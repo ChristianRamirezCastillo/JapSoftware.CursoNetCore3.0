@@ -32,7 +32,7 @@ namespace Ejemplo01.Controllers
         // [Route("Home/Details/{id?}")]
         public ViewResult Details(int? id)
         {
-            throw new Exception("Error forzado....");
+            //throw new Exception("Error forzado....");
 
             Amigo modelo = _amigoAlmacen.DameDatosAmigo(1);
             //ViewBag.Titulo = "Lista de Amigos";
