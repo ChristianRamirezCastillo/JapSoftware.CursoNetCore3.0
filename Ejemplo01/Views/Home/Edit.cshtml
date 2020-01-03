@@ -1,0 +1,64 @@
+@model EditarAmigoModelo
+@{
+    ViewBag.Title = "Editar amigo";
+     var rutaFoto = "~/img/" + (Model.RutaFotoExistente ?? "codigo01.jpg");
+}
+
+<form asp-controller="home" asp-action="edit" method="post" enctype="multipart/form-data">
+    <input hidden asp-for="Id" />
+    <input hidden asp-for="RutaFotoExistente" />
+    
+    <div class="form-group">
+        <label asp-for="Nombre"></label>
+        <div>
+            <input type="text" class="form-control" asp-for="Nombre">
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        
+    </div>
+    
+        <label asp-for="Email"></label>
+        <div>
+            <input type="email" class="form-control" asp-for="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Ciudad"></label>
+        <div>
+            <select class="form-control" asp-for="Ciudad" 
+                asp-items="Html.GetEnumSelectList<Provincia>()">
+                    <option>-- Seleccione--</option>
+            </select>
+            <span asp-validation-for="Ciudad" class="text-danger"></span>
+        </div>
+    </div> 
+    <div class="form-group">
+        <label asp-for="Foto"></label>
+        <div>
+            <div class="custom-file">
+                <input asp-for="Foto" type="file"  class="form-control custom-file-input" />
+                <label class="custom-file-label">-- Clic para modificar la foto --</label>
+            </div>
+        </div>
+    </div> 
+    <div class="form-group"> 
+        <img class="imageThumbnail" src="@rutaFoto" asp-append-version="true" width="240" height="250" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Nuevo</button>
+    </div>
+
+        @section Scripts {
+        <script>
+            $(document).ready(function() {
+                $(".custom-file-input").on("change", function() {
+                    var filename = $(this).val().split("\\").pop();
+                    $(this).next(".custom-file-label").html(filename);
+                });
+            });
+        </script>
+    }
+</form>
+
+
