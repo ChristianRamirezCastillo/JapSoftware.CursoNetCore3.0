@@ -1,0 +1,1 @@
+# JapSoftware.CursoNetCore3.0
