@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Microsoft.AspNetCore.Identity;
 
 namespace Ejemplo01
 {
@@ -31,6 +31,7 @@ namespace Ejemplo01
             /*se crea por primera vez y reutilizada en cada solicitud*/
             //services.AddSingleton<IAmigoAlmacen, MockAmigoRepositorio>();
             services.AddScoped<IAmigoAlmacen, SQLAmigoRepositorio>();
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
             
         }
 
@@ -49,6 +50,7 @@ namespace Ejemplo01
             }
 
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
