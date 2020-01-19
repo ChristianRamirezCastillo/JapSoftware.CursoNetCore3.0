@@ -1,4 +1,4 @@
-# **Curso .NET Core en C# 3.0**
+# **Curso .NET Core 3.0 en C#**
 **Youtube:** Jap Software (https://www.youtube.com/playlist?list=PLLJJqiFt6VPrSzPakVEy1_WpwqcWD1vAc)
 
 
